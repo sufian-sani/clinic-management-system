@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load navmanu %}
+
+{% block content %}
+<section id="treatment-banner">
+    <div class="trmnt-img">
+        <img src="{% static 'dentapp/img/img_banner.jpg' %}" alt="trmnt-img" srcset="" class="w-100 img-fluid">
+    </div>
+    <div class="trmnt-overly">
+        <div class="trmnt-overly-content text-center">
+           <div class="container">
+            <h2>OUR DOCTORS</h2>
+           </div>
+        </div>
+    </div>       
+    </section>
+    <div class="container">
+        <div class="urlmap my-3">
+            <p>Home >> <span class="text-primary">Our Doctor List</span></p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2 style="color:#091E3E ; text-align: center;">All Doctors</h2>
+         <div class="mx-auto">
+            <hr class="col-12 mx-auto text-primary" style="width: 220px; padding: 1.5px;">
+         </div>
+         <p style="text-align: center;">The art & science of Dentistry has many facets that include knowledge of Biology, Medicine, Engineering, Material science, Pshycology, Artistry, Business, Humanitarianism and Leadership. Unlike any other discipline, Dentistry has 7 specialities adding to the complexity of the treatment.</p>  
+    </div>
+
+    <div class="container ">
+        <div class="row my-5">
+            {% for doctor in doctor_list %}
+                <div class="col-6 col-md-4 col-lg-3 service-item wow zoomIn" data-wow-delay="0.3s">
+                    <a href="{% url 'doctordetails' slug=doctor.slug %}">
+                    <div class="rounded-top overflow-hidden text-center">
+                        <img class="img-fluid" src="{{ doctor.image.url }}" alt="">
+                    </div>
+                    <div class="position-relative bg-light rounded-bottom text-center p-4">
+                        <h5 class="m-0">{{ doctor.doctor_name }}</h5>
+                        <span>{{ doctor.degree }} | {{ doctor.connection_depertment }}</span>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+    
+

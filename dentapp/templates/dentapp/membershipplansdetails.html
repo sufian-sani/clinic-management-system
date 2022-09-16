@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load navmanu %}
+
+{% block content %}
+<section id="treatment-banner">
+    <div class="trmnt-img">
+        <img src="{% static 'dentapp/img/img_banner.jpg' %}" alt="trmnt-img" srcset="" class="w-100 img-fluid">
+    </div>
+    <div class="trmnt-overly">
+        <div class="trmnt-overly-content text-center">
+           <div class="container">
+            <h2 style="text-transform:uppercase;">{{ membership_plans.title }}</h2>
+           </div>
+        </div>
+    </div>       
+    </section>
+    <div class="container">
+        <div class="urlmap my-3">
+            <p>Home >> <span class="text-primary">{{ membership_plans.title }}</span></p>
+        </div>
+    </div>
+
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for mbi in membershipBannerImage %}
+                {% if forloop.counter == 1 %}
+                    <div class="carousel-item active">
+                {% else %}
+                    <div class="carousel-item">
+                 {% endif %}
+                <img src="{{ mbi.image.url}}" class="d-block w-100"   alt="Los Angeles" >  
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="container">
+        {% for md in membershipDescription %}
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <h4 class="text-center mt-3">{{ md.title }}</h4>
+                    <p>{{ md.description|safe }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+      </div>
+
+      
+      <div class="container my-5">
+          <div class="row">
+            <div class="d-flex align-items-start">
+              <div class="col-4">
+                <div class="nav flex-column nav-pills me-3 card" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    {% for md in membershipDescription %}
+                    {% if md.id == 1 %}
+                        <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ md.title }}</button>
+                    {% else %}
+                        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"></button>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+              </div>
+              
+              <div class="col-8">
+                <div class="tab-content card" id="v-pills-tabContent">
+                    {% for md in membershipDescription %}
+                    {% if md.id == 1 %}
+                        <div class="tab-pane fade show active m-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{{ md.description|safe }}</div>
+                    {% else %}
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{{ md.description|safe }}</div>
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="text-align: end">
+                    <a href="{% url 'membershipform' slug=membership_plans.slug %}" class="btn btn-primary mt-5" style="color:#fff;">Bacome a member</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{% url 'membershiplogin' %}" class="btn btn-info mt-5" style="color:#fff;">Already Member</a>
+                </div>
+            </div>
+          </div>
+      </div>
+     
+
+
+
+        
+      
+{% endblock content %}
+    
+

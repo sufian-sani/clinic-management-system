@@ -1,0 +1,19 @@
+{% load navmanu %}
+
+<div class="container my-5">
+    <h2 style="text-align: center;" >SYMPTOMS & TREATMENTS</h2>
+    <div class="row my-5">
+        
+        {% for tmnt in request|treatments %}
+        <a href="{% url 'treatments-details' tmnt.slug %}">
+          <div class="treatment-box col-md-2  col-6 m-0 p-0">
+            <div class="treatment-content text-center">
+                <img src="{{ tmnt.icon_image.url}}" alt="" style="width: 180px;">
+              <p class="my-4" style="color:#091E3E;">{{ tmnt.title }}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      
+    </div>
+</div>

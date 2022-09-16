@@ -1,0 +1,20 @@
+{% load navmanu %}
+
+{{ bangla_date }}
+<div class="container bg-light">
+    <h2 style="color:#091E3E ; text-align: center; padding-top: 15px;">MEMBERSHIP PLANS</h2>
+    <div class="row my-5">
+        {% for mp in request|membership_plans %}
+        <a href="{% url 'membershipplans-details' mp.slug %}">
+            <div class="col-6 service-item wow zoomIn" data-wow-delay="0.3s">
+                <div class="rounded-top overflow-hidden">
+                    <img class="img-fluid" src="{{ mp.image.url }}" alt="">
+                </div>
+                <div class="position-relative bg-light rounded-bottom text-center p-4">
+                    <h5 class="m-0">{{ mp.title }}</h5>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>

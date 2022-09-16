@@ -1,0 +1,42 @@
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.1s">
+                <div class="section-title bg-light rounded h-100 p-5">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Our Dentist</h5>
+                    <h1 class="display-6 mb-4">Meet Our Certified & Experienced Doctors</h1>
+                    <a href="{% url 'appointment' %}" class="btn btn-primary py-3 px-5">Appointment</a>
+                </div>
+            </div>
+            {% for doctorprofile in doctor_profile %}
+            <div class="profile_main col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                <div class="team-item">
+                    <div class="position-relative rounded-top" style="z-index: 1;">
+                        <img class="custom_size img-fluid rounded-top w-100" src="/media/{{doctorprofile.image}}" alt="">
+                    </div>
+                    <div class="profile_body_content team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
+                        <h4 class="mb-2"><a href="{% url 'doctordetails' slug=doctorprofile.slug %}" class="text-decoration-none">{{doctorprofile.doctor_name}}</h4></a>
+                        <small>{{doctorprofile.degree}}</small>
+                        <p class="text-primary mb-0">{{doctorprofile.connection_depertment}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom_size{
+        width: 150px;
+        height: 250px;
+    }
+    .profile_main{
+        width: 255px;
+    }
+    .profile_body_content{
+        margin-top: -35px;
+    }
+</style>

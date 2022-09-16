@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load navmanu %}
+
+{% block content %}
+<section id="treatment-banner">
+    <div class="trmnt-img">
+        <img src="{% static 'dentapp/img/img_banner.jpg' %}" alt="trmnt-img" srcset="" class="w-100 img-fluid">
+    </div>
+    <div class="trmnt-overly">
+        <div class="trmnt-overly-content text-center">
+           <div class="container">
+            <h2 style="text-transform:uppercase;">{{ patientsafety.title }}</h2>
+           </div>
+        </div>
+    </div>       
+    </section>
+    <div class="container">
+        <div class="urlmap my-3">
+            <p>Home  >>  <span class="text-primary">{{ patientsafety.title }}</span></p>
+        </div>
+    </div>
+
+
+
+    <div class="container my-5">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <p>{{ patientsafety.long_description|safe }}</p>
+            </div>
+        </div>
+        
+    </div>
+    
+{% endblock content %}
+    
+

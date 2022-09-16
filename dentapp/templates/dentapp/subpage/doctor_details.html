@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load navmanu %}
+
+{% block content %}
+<section id="treatment-banner">
+    <div class="trmnt-img">
+        <img src="{% static 'dentapp/img/img_banner.jpg' %}" alt="trmnt-img" srcset="" class="w-100 img-fluid">
+    </div>
+    <div class="trmnt-overly">
+        <div class="trmnt-overly-content text-center">
+           <div class="container">
+            <h2>DOCTORS</h2>
+           </div>
+        </div>
+    </div>       
+    </section>
+    <div class="container">
+        <div class="urlmap my-3">
+            <p>Home >> <span class="text-primary">Doctor Details</span></p>
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="row my-5">
+                <div class="col-4 col-md-4 col-lg-4 service-item wow zoomIn" data-wow-delay="0.3s">
+                    <div class="rounded-top overflow-hidden text-center">
+                        <img class="img-fluid" src="{{ doctor_details.image.url }}" alt="">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-7 service-item wow zoomIn" data-wow-delay="0.3s">
+                    <div class="position-relative bg-light rounded-bottom text-center p-4">
+                        <h3 class="m-0 py-3">{{ doctor_details.doctor_name }}</h3>
+                        <h6>{{ doctor_details.degree }}</h6>
+                        <span>Specialist: {{ doctor_details.connection_depertment }}</span>
+                    </div>
+                </div>
+        </div>
+        <div class="row my-1">
+                <div class="position-relative bg-light p-4">
+                    <p>Joied Date: {{ doctor_details.join_date }}</p>
+                    <p>On Duty: {% if doctor_details.active_status %} Yes {% else %} No {% endif %}</p>
+                    <p>Available Date: <strong>{{ doctor_details.weekly }}</strong></p>
+                    <p>Schedule Time: <strong>{{doctor_details.start_time}} to {{doctor_details.end_time}}</strong></p>
+                    <p>Consulting Timeline: <strong>{{ doctor_details.avg_duration_min }} minutes</strong></p>
+                </div>
+        </div>
+    </div>
+
+{% endblock content %}
+    
+

@@ -1,0 +1,20 @@
+{% load navmanu %}
+<div class="container-fluid py-3 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <h2 style="text-align: center;" >PATIENT SAFETY</h2>
+        <div class="row g-5 my-3">          
+            {% for ps in request|patientsafety %}
+                <div class="col-md-4 service-item wow zoomIn" data-wow-delay="0.6s">
+                    <div class="rounded-top overflow-hidden">
+                        <img class="img-fluid" src="{{ ps.image.url }}" alt="">
+                    </div>
+                    <div class="position-relative bg-light rounded-bottom  p-4">
+                        <h5 class="m-0 text-center my-1">{{ ps.title }}</h5>
+                        <p>{{ ps.short_description }}</p>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

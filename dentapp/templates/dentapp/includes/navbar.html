@@ -1,0 +1,79 @@
+{% load navmanu %}
+{% load static %}
+<style>
+    .carousel-caption{
+        background: rgba(9, 30, 62, 0) !important;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
+    <a href="{% url 'home' %}" class="navbar-brand p-0">
+        <img src="{% static 'dentapp/img/logo.png' %}" alt="" style="width:75px;"><span class="ms-3 text-primary" style="font-size:14px">কিউর হিজামা, আকুপ্রেশার এবং ন্যাচারোপ্যাথি সেন্টার</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+            <div class="nav-item">
+                <a href="{% url 'home' %}" class="nav-link" >HOME</a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="{% url 'treatments' %}" class="nav-link dropdown-toggle" >TREATMENTS</a>
+                <div class="dropdown-menu m-0">
+                    {% for tmnt in request|treatments %}
+                        <a href="" class="dropdown-item">{{ tmnt.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="/alldoctor/" class="nav-link dropdown-toggle" data-bs-toggle="">OUR DOCTORS</a>
+                <div class="dropdown-menu m-0">
+                    <a href="price.html" class="dropdown-item">Pricing Plan</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">MEMBERSHIP PLANS</a>
+                <div class="dropdown-menu m-0">
+                    {% for mp in request|membership_plans %}
+                        <a href="{% url 'membershipplans-details' slug=mp.slug %}" class="dropdown-item">{{ mp.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="nav-item dropdown">
+                <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu m-0 dropdown dropend" aria-labelledby="multilevelDropdownMenu1">
+                        <a href="{% url 'aboutus' %}" class="dropdown-item">About Us</a>
+                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown" id="multilevelDropdownMenu1" aria-haspopup="true" aria-expanded="false">PATIENT SAFETY</a>
+                        <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu2" style="margin:-41px 0 0 160px;">
+                            {% for tmnt in request|patientsafety %}
+                                <a href="{% url 'patientsafety-details' tmnt.slug %}" class="dropdown-item">{{ tmnt.title }}</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+            </div>
+
+        </div>
+        <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+        <a href="{% url 'appointment' %}" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+    </div>
+</nav>
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->

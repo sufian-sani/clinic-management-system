@@ -1,0 +1,471 @@
+{% extends "appoinments/base.html" %}
+
+{% block apcontent %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<div class="clove_appointment">
+	<div class="breadcrumb">
+		<div class="box">
+			<ul>
+				<li><a href="/">Home</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="boxcomman">
+	
+	
+	
+		<div align="center" style="color:#008A00;font-size:17px;font-weight: bold;">
+		</div>
+			
+    <p>{{success_message}}</p>
+		
+		<h3 data-appear-animation="fadeInDown" data-appear-animation-delay="10">Book an Appointment: </h3>
+				<form action="{% url 'appointment' %}" method="POST" enctype="multipart/form-data" id="newuserfrom">
+				{% csrf_token %}
+			<input type="hidden" name="form_type" value="appointment">
+			<div class="form-left fix_appointment_panel">
+				<div class="appointment_stepbox">
+					<div class="inner_area">
+						<div class="step_point">1</div>
+	
+					<h2>Select Department</h2>
+
+						<div class="row select_locate_area">
+						<select id="clinicHeade" class="select_box select" name="departmentname" onChange="x()" aria-label="">
+						<option value="00">Select Department</option>
+							{% for department in departments %}
+								<option value={{department.id}}>{{department}}</option>
+							{% endfor %}
+						</select>
+						</div>
+
+						<h2>Select Doctor</h2>
+						<div class="row select_locate_area" id="docoptionid">
+						{% comment %} <select class="select_box select" id="state_id" name="loc">
+							<option value="00">Select Department</option>
+						</select> {% endcomment %}
+
+						{% comment %} <div class="mb-3" id="docoptionid">
+             
+						</div> {% endcomment %}
+
+							<p class="error-n error-c" id="loc_error1"></p>
+							
+						</div>
+
+						<h2>Doctor Details</h2>
+						<div class="doctor_details" id="doctordetailsId">
+
+						</div>
+						
+						<div id="addressId" class="location_detials_area" data-appear-animation="fadeInDown" data-appear-animation-delay="10">
+							</div>
+					</div>
+				</div>
+				<div class="appointment_stepbox middle_step step_disable" id="datepick">
+					<div class="inner_area">
+						<div class="step_point">2</div>
+						<h2>Select Date &amp; Time</h2>
+						<div class="row">
+							<input type="text"  name="app_date" value="" id="show_date3323" onChange="fcalendar()" required class="input_datetext">
+							{% comment %} <input class="form-control" type="date" id="calendar_main" name="calendar_date" onChange="fcalendar()"> {% endcomment %}
+							{% comment %} <input type="text" name="app_date" value="" id="datetimepicker3" required class="input_datetext"> {% endcomment %}
+						</div>
+					</div>
+					<div class="row select_locate_area" id="time">
+            
+					</div>
+				</div>
+				<div class="appointment_stepbox step_disable" id="frmshow">
+					<div class="inner_area">
+						<div class="step_point">3</div>
+						<h2>Personal Details</h2>
+						<div class="personal_detail_content">
+							<div class="row2">
+                <input type="text" name="phone" class="input_box" value="" placeholder="Mobile Number*" id="phone" required>
+								<p class="error-n error-c" id="app_error1"></p>
+							</div>
+							<div class="row2"><input type="text" name="fullname" class="input_box" value="" placeholder="Full Name*" id="name_id" required>
+								<p class="error-n error-c" id="app_error2"></p>
+							</div>
+							<div class="row2"><input type="text" name="email" class="input_box right" value="" placeholder="Email Id" id="email_id">
+								<p class="error-n error-c" id="app_error3"></p>
+							</div>
+							<textarea class="textarea_box" name="message" placeholder="Type Text Message"></textarea>
+							<div class="appointment_capchacode">
+								<input id="cap_Code" name="cap_Code" type="text" class="input_box capcha_input">
+								<img id="captcha_code1" src="https://clovedental.in/captcha/captchaCode.php?id=1" alt="Captcha"/>
+								<p onclick="refreshCaptchaApp();" class="capLoad">Refresh Captcha</p>
+								<p id="app_error4" class="error-n error-c"></p>
+							</div>
+														<div class="appointment_submit">
+<div class="clearfix"></div>
+                                                            <div class="form-disclaimer">
+         <input type="checkbox" id="disclaimer" name="disclaimer" value="Y" checked="checked">
+         <label for="disclaimer" style="font-size: 9px;">I declare that the information provided is correct. I would like to receive communication about services.</label>
+		 </div> 
+
+    <input type="hidden" name="utm_source" id=" " value="">
+    <input type="hidden" name="utm_campaign" id=" " value="">
+    <input type="hidden" name="utm_medium" id=""  value="">
+    <input type="hidden" name="utm_term" id=""  value="">
+
+
+	<input type="hidden" name="Friday" id="id_Friday">
+	<input type="hidden" name="Saturday" id="id_Saturday">
+	<input type="hidden" name="Sunday" id="id_Sunday">
+	<input type="hidden" name="Monday" id="id_Monday">
+	<input type="hidden" name="Tuesday" id="id_Tuesday">
+	<input type="hidden" name="Wednesday" id="id_Wednesday">
+	<input type="hidden" name="Thursday" id="id_Thursday">
+
+
+															<div class="clearfix"></div>
+	<button type="submit" value="submit" name="button" class="button">Submit</button>
+	<span class="wait error-n">Please wait...</span>
+</div>
+							
+		<div class="clearfix"></div>	
+		 <div class="form-disclaimer">				
+        <label style="font-size: 9px;"><br />By clicking Submit you agree to be contacted by Phone or SMS/WhatsApp/Email.</label></div>
+		 </div>
+						
+			</div>
+		</div>
+	</div>
+	</div>
+	</form>
+</div>
+
+
+    <script>
+      var calendar = document.getElementById("datepick");
+      var patientname = document.getElementById("frmshow");
+      calendar.style.display = ""
+      patientname.style.display = ""
+
+      function x(){
+
+        var dept_id = document.getElementById("clinicHeade").value;
+        console.log('dept_id');
+        console.log(dept_id);
+
+        jQuery.ajax({
+          url: "{% url 'docshowbydept' %}",
+          type: "POST",
+          data: {dept_id:dept_id},
+  
+        })
+        .done(function(response){
+  
+        console.log('response')
+        console.log(response)
+        console.log('response')
+
+        var prod = JSON.parse(response);
+
+        console.log('prod')
+        console.log(prod)
+
+        var len = prod.length;
+        var strs22 = "";
+
+        for(var i=0;i<len;i++){
+            var cat_name3 = JSON.stringify(prod[i].fields.doctor_name);
+            var pk_id = JSON.stringify(prod[i].pk);
+
+            console.log('cat_name3')
+            console.log(cat_name3)
+
+            console.log('pk_id')
+            console.log(pk_id)
+
+            var cat_name2 = cat_name3.slice(0, -1)
+            console.log(cat_name2)
+
+            var cat_name = cat_name2.slice(1);
+            console.log(cat_name)
+
+            var cat_pk = JSON.stringify(prod[i].pk);
+
+            console.log(cat_pk)
+            //var i =document.getElementById("docnameid").innerHTM
+            //console.log(i)
+            strs22=strs22+`<option id='docnameid' value='${pk_id}'>${cat_name}</option>`
+            //strs22=strs22+`<li class="dropdown menu-item"> <a href="/category_products/${cat_pk}">${cat_name}</a></li>`
+        }
+
+        document.getElementById("docoptionid").innerHTML = `
+            <select class="select_box select" name="loc" id="state_id" onChange="s_doc()" aria-label="">
+                  <option selected>Select Doctor</option>
+                      ${strs22}
+                    </select>
+                    `;
+					
+
+        //document.getElementById('show_index_cats').innerHTML=strs22;
+  
+        });
+
+
+      };
+
+      function s_doc(){
+        var doc_id = document.getElementById("state_id").value;
+        console.log('doc_id');
+        console.log(doc_id);
+
+        jQuery.ajax({
+          url: "{% url 'docshowbydept2' %}",
+          type: "POST",
+          data: {doc_id:doc_id},
+  
+        })
+        .done(function(response){
+
+			console.log('response')
+			console.log(response)
+			var kere = response
+
+
+			console.log('response')
+
+			if(kere.indexOf("Friday") !== -1){
+				console.log("Friday")
+				document.getElementById('id_Friday').value=`Friday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Saturday") !== -1){
+				console.log("Saturday")
+				document.getElementById('id_Saturday').value=`Saturday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Sunday") !== -1){
+				console.log("Sunday")
+				document.getElementById('id_Sunday').value=`Sunday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Monday") !== -1){
+				console.log("Monday")
+				document.getElementById('id_Monday').value=`Monday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Tuesday") !== -1){
+				console.log("Tuesday")
+				document.getElementById('id_Tuesday').value=`Tuesday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Wednesday") !== -1){
+				console.log("Wednesday")
+				document.getElementById('id_Wednesday').value=`Wednesday`
+				}
+
+			else{
+
+				}
+
+			if(kere.indexOf("Thursday") !== -1){
+				console.log("Thursday")
+				document.getElementById('id_Thursday').value=`Thursday`
+				}
+
+			else{
+
+				}
+
+			var r = kere[0]
+			var r = kere[1]
+			var r = kere[2]
+			var r = kere[3]
+			var r = kere[4]
+			var r = kere[5]
+			var r = kere[6]
+			console.log(r)
+
+			document.getElementById("doctordetailsId").innerHTML = 'hello';
+
+
+
+$('#show_date3323').datepicker({
+
+
+
+    dateFormat: "yy-mm-dd",
+    maxDate: '30D',
+    minDate: '-1D',
+
+
+
+
+    beforeShowDay : function(date){
+    var day = date.getDay();
+    var month = date.getMonth();
+    var currDate = date.getDate();
+
+    if(day==kere[0] || day==kere[1] || day==kere[2] || day==kere[3] || day==kere[4] || day==kere[5] || day==kere[6])
+    {
+    return[false];
+    }
+    else if(month == 4 && currDate == 30){
+        return [false]
+    }
+    else
+       return[true];
+    }
+
+
+
+});
+
+
+
+
+
+			});
+
+        if (doc_id !== null && doc_id !== undefined){
+          calendar.style.display = '';
+		      calendar.classList.remove("step_disable");
+		      console.log('dddddddddddddddddddddddddddddddddd')
+        }else{
+          calendar.style.display = '';
+          console.log('dddddddddddddddddddddddddddddddddd')
+        }
+
+    }
+
+    function fcalendar(){
+      var date_value = document.getElementById("show_date3323").value;
+
+      console.log(date_value)
+      console.log(typeof date_value)
+
+      jQuery.ajax({
+        url: "{% url 'docshowbydept3' %}",
+        type: "POST",
+        data: {date_value:date_value},
+
+      })
+      .done(function(response){
+  
+        console.log('response')
+        console.log(response)
+        console.log('response')
+
+        var time_prod = response;
+
+        console.log('time_prod')
+        console.log(typeof time_prod)
+        console.log(time_prod.length)
+        var time_prod_len = time_prod.length;
+        var time_prod_strs22 = "";
+
+        for(var i=0;i<time_prod_len;i++){
+          var time_slot_store = time_prod[i]
+
+          time_prod_strs22=time_prod_strs22+`<option id='docnameid' value='${time_slot_store}'>${time_slot_store}</option>`
+
+        }
+
+        document.getElementById("time").innerHTML = `
+            <select class="form-select select_box select" name="timeslotpick" id="timeslotid" onChange="timeslotset()" aria-label="">
+                  <option selected>Select Time Slot</option>
+                      ${time_prod_strs22}
+                    </select>
+                    `;
+    })
+    
+  }
+
+  function timeslotset(){
+    var timeslotset = document.getElementById("timeslotid").value;
+    console.log('timeslotset');
+    console.log(timeslotset);
+
+    jQuery.ajax({
+      url: "{% url 'docshowbydept4' %}",
+      type: "POST",
+      data: {timeslotset:timeslotset},
+
+    })
+
+    if (timeslotset !== null && timeslotset !== undefined){
+      patientname.style.display = '';
+      patientname.classList.remove("step_disable");
+    }else{
+      patientname.style.display = '';
+    }
+  }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    var satt= 3;
+
+	var get_Wednesday =  document.getElementById('id_Friday').value
+	var get_Wednesday =  document.getElementById('id_Saturday').value
+	var get_Wednesday =  document.getElementById('id_Sunday').value
+	var get_Wednesday =  document.getElementById('id_Monday').value
+	var get_Wednesday =  document.getElementById('id_Tuesday').value
+	var get_Wednesday =  document.getElementById('id_Wednesday').value
+	var get_Wednesday =  document.getElementById('id_Thursday').value
+	console.log('get_Wednesday')
+    console.log(get_Wednesday)
+
+    $(document).ready(function(){
+
+
+
+
+
+
+
+
+
+    });
+</script>
+
+
+
+
+
+
+{% endblock apcontent %}
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% comment %} <link href="https://clovedental.in/wp-content/themes/clove/css/font-awesome.css" rel="stylesheet"> {% endcomment %}
+    <link href="{% static 'appointment/css/font-awesome.css' %}" rel="stylesheet">
+
+<link href="https://clovedental.in/wp-content/themes/clove/css/fonts.css" rel="stylesheet"/>
+
+{% comment %} <link href="https://clovedental.in/wp-content/themes/clove/css/animations.css" rel="stylesheet"> {% endcomment %}
+
+
+<link rel="stylesheet" href="https://clovedental.in/wp-content/themes/clove/css/jquery.datetimepicker.css" />
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet'>
+
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	
+<script src="https://clovedental.in/wp-content/themes/clove/js/jquery.js"></script>
+<meta name='robots' content='max-image-preview:large' />
+
+
+<link rel='stylesheet' id='wp-block-library-css'  href='https://clovedental.in/wp-includes/css/dist/block-library/style.min.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='cf7rgk_redirect_front_style-css'  href='https://clovedental.in/wp-content/plugins/cf7-redirects/library/css/style.css?ver=1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://clovedental.in/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='email-subscribers-css'  href='https://clovedental.in/wp-content/plugins/email-subscribers/lite/public/css/email-subscribers-public.css?ver=5.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='twentythirteen-style-css'  href='https://clovedental.in/wp-content/themes/clove-child/style.css?ver=2013-07-18' type='text/css' media='all' />
+
+
+<script type='text/javascript' src='https://clovedental.in/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://clovedental.in/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://clovedental.in/wp-content/plugins/cf7-redirects/library/js/script.js?ver=1.2' id='cf7rgk_redirect_front_script-js'></script>
+<script type='text/javascript' id='my_voter_script-js-extra'>
+/* <![CDATA[ */
+{% comment %} var myAjax = {"ajaxurl":"https:\/\/clovedental.in\/wp-admin\/admin-ajax.php"}; {% endcomment %}
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://clovedental.in/wp-content/plugins/cf7-redirects/library/js/cf7rgk_script_ajax.js?ver=1.2' id='my_voter_script-js'></script>
+<script type='text/javascript' id='email-subscribers-js-extra'>
+/* <![CDATA[ */
+var es_data = {"messages":{"es_empty_email_notice":"Please enter email address","es_rate_limit_notice":"You need to wait for sometime before subscribing again","es_single_optin_success_message":"Successfully Subscribed.","es_email_exists_notice":"Email Address already exists!","es_unexpected_error_notice":"Oops.. Unexpected error occurred.","es_invalid_email_notice":"Invalid email address","es_try_later_notice":"Please try after some time"},"es_ajax_url":"https:\/\/clovedental.in\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://clovedental.in/wp-content/plugins/email-subscribers/lite/public/js/email-subscribers-public.js?ver=5.0.4' id='email-subscribers-js'></script>
+<link rel="https://api.w.org/" href="https://clovedental.in/wp-json/" /><link rel="alternate" type="application/json" href="https://clovedental.in/wp-json/wp/v2/pages/115" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://clovedental.in/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://clovedental.in/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.2" />
+<link rel='shortlink' href='https://clovedental.in/?p=115' />
+<link rel="alternate" type="application/json+oembed" href="https://clovedental.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fclovedental.in%2Fappointments%2F" />
+<script src="https://clovedental.in/wp-content/themes/clove/js/jquery.datetimepicker.full.js" ></script>
+
+<script src="https://www.google.com/jsapi"></script>
+<!-- Owl Carousel Assets -->
+<link href="https://clovedental.in/wp-content/themes/clove/css/owl.carousel.css" rel="stylesheet">
+<link href="https://clovedental.in/wp-content/themes/clove/css/owl.theme.css" rel="stylesheet">
+<script src="https://clovedental.in/wp-content/themes/clove/js/jquery.mousewheel.js"></script>
+<script src="https://clovedental.in/wp-content/themes/clove/js/jquery.jscrollpane.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+
+    {% block apcontent %}
+    
+    {% endblock apcontent %}
+
+    
+<script>
+
+    var logic = function(ctt){
+    
+    var daydate = ctt.getDate();
+    var daymonth = ctt.getMonth();
+    var currentdate = new Date();
+    var curdate = currentdate.getDate();
+    var curmonth = currentdate.getMonth();
+    var city_id = jQuery( "#clinicHeade" ).val();
+    //alert(city_id);
+    this.setOptions({timepicker:true,});
+    var id = jQuery( "#state_id" ).val();
+    var data = 'id='+id+'&type=appointment_page' 
+    if(id!='' && id!="00"){
+     if((curdate == daydate) & (curmonth == daymonth)){
+            
+            $.ajax({ 
+            type:"POST", 
+            cache:false, 
+            url:"", 
+            data:data+'&timing=short', 
+                success: function (html) { 
+                jQuery("#datetimepicker3").datetimepicker("setOptions", { allowTimes:html.split(',')});
+                }
+            });
+            
+        } else { 
+        
+            $.ajax({ 
+            type:"POST", 
+            cache:false, 
+            url:"", 
+            data:data+'&timing=full', 
+                success: function (html) { 
+                jQuery("#datetimepicker3").datetimepicker("setOptions", { allowTimes:html.split(',')});
+                }
+            });
+        } 
+    }
+        
+    }; 
+    
+    jQuery( '#datetimepicker3' ).datetimepicker( {
+        scrollMonth: false, 
+        yearStart: 2022, 
+        monthStart: 05, 
+            value: 'Y',
+            minDate: '0d',
+        inline: true,
+        allowTimes:['14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00'],
+        formatTime: 'g:i A', 
+        step: 15,	
+        ampm: true,	
+        onChangeDateTime:logic,	
+    });
+     
+    /* -------------------- */
+    var timecheck = function(){
+        var param1 = Date.parse( new Date() );
+        var ddd = Date.parse( new Date( jQuery( "#datetimepicker3" ).val() ) );
+        if ( ddd > param1 ) { 
+            jQuery( "#frmshow" ).removeClass( "step_disable" );
+        } else if ( ddd < param1 ) { 
+            jQuery( "#frmshow" ).addClass( "step_disable" ); 
+        }
+    }
+    
+    
+    jQuery( '#datetimepicker3' ).css( 'display', 'block' );
+    
+    
+    jQuery( "#datetimepicker3" ).change( function () { 
+        if ( jQuery( "#state_id" ).val() != '' && jQuery( "#state_id" ).val() != '00' ) {
+            timecheck();
+        }
+         
+    } );
+    
+        
+    $(document).ready(function(){
+        $( "#clinicHeade" ).change(function(){
+            var id = $( "#clinicHeade" ).val();
+            var data = 'id='+id+'&type=clove_clinics';
+            $.ajax({
+                type:"POST",
+                cache:false,
+                url:"",
+                data:data,
+                success: function (html){
+                    $('#state_id').html(html);
+                    $('#addressId').empty();
+                }
+            }); 
+        });
+        
+        jQuery( "#state_id" ).change(function() {
+        var id = jQuery( "#state_id" ).val();
+        var data = 'id='+id+'&type=appointment_page' 
+    
+            $.ajax({ 
+            type:"POST", 
+            cache:false, 
+            url:"", 
+            data:data, 
+                success: function (html) { 
+                jQuery('#addressId').html(html); 
+                }
+            });
+            $.ajax({ 
+            type:"POST", 
+            cache:false, 
+            url:"", 
+            data:data+"&timing=short", 
+                success: function (html) { 
+                jQuery("#datetimepicker3").datetimepicker("setOptions", { allowTimes:html.split(',')});
+                }
+            });
+        jQuery("#datepick").removeClass("step_disable");
+        });
+        
+     });
+    </script>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    
+
+    <script type='text/javascript' src='https://clovedental.in/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.5.3' id='contact-form-7-js'></script>
+    <script type='text/javascript' src='https://clovedental.in/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+    <script type='text/javascript' src='https://clovedental.in/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+    <script type='text/javascript' src='https://clovedental.in/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js'></script>
+    <!-- Google Code for Remarketing Tag -->
+    <script src="https://clovedental.in/wp-content/themes/clove/js/waypoints.min.js" ></script>
+    <script src="https://clovedental.in/wp-content/themes/clove/js/jquery.counterup.min.js" ></script>
+    <script src="https://clovedental.in/wp-content/themes/clove/js/owl.carousel.min.js" ></script>
+
+
+    
+    
+</body>
+</html>

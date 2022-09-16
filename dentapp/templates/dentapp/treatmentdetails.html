@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load navmanu %}
+
+{% block content %}
+<section id="treatment-banner">
+    <div class="trmnt-img">
+        <img src="{% static 'dentapp/img/img_banner.jpg' %}" alt="trmnt-img" srcset="" class="w-100 img-fluid">
+    </div>
+    <div class="trmnt-overly">
+        <div class="trmnt-overly-content text-center">
+           <div class="container">
+            <h2 style="text-transform:uppercase;">{{ treatments.title }}</h2>
+           </div>
+        </div>
+    </div>       
+    </section>
+    <div class="container">
+        <div class="urlmap my-3">
+            <p>Home >> <span class="text-primary">Our Specialities</span> >>  <span class="text-primary">{{ treatments.title }}</span></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row shadow">
+            <div class="col-8 text-center my-auto">
+                <p>{{ treatments.short_Description|safe }}</p>
+            </div>
+            <div class="col-4 p-0">
+                <img class="float-right" src="{{ treatments.image.url }}" style="max-height: 300px ; min-height: 250px; width: 100%;">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container my-5">
+        <div class="row">
+            {% for tig in treatmentImageGallery %}
+              <div class="col-12 col-md-6">
+                <div class="row m-2">
+                    <div class="col-6 m-0 p-0">
+                        <div class="card shadow">
+                            <img class="img-fluid" src="{{ tig.before_image.url }}" alt="">
+                        </div>
+                        <div class="trmnt-before m-1">
+                            <p>BEFORE</p>
+                        </div>
+                    </div>
+                    <div class="col-6 m-0 p-0">
+                        <div class="card  shadow">
+                            <img class="img-fluid" src="{{ tig.after_image.url }}" alt="">
+                        </div>
+                        <div class="trmnt-after m-1">
+                            <p>AFTER</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+
+    <div class="container my-5">
+        <p>{{ treatments.long_description|safe }}</p>
+    </div>
+{% endblock content %}
+    
+
